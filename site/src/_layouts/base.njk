@@ -1,16 +1,11 @@
-<!doctype html>
-<html {% if section %} data-current="{{ section }}"{% endif %} lang="en">
-
-	{% include "partials/head.njk" %}
-
-	<body>
-		{% include "partials/site-header.njk" %}
-
-		<main>
-			{{ layoutContent | safe }}
-		</main>
-
-		{% include "partials/footer.njk" %}
-	</body>
-
+<!DOCTYPE html>
+<html lang="{{ site.language }}">
+<head>
+  {% include "head.njk" %}
+</head>
+<body id="top" class="font-sans text-gray-800 bg-gray-100">
+  {{ content | safe }}
+  {% include "footer.njk" %}
+  {% include "js.njk" %}
+</body>
 </html>

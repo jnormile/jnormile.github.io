@@ -1,52 +1,67 @@
-const eleventyNavigationPlugin = require('@11ty/eleventy-navigation');
-const imageShortcode = require('./src/_11ty/shortcodes/image-shortcode');
-const markdownLibrary = require('./src/_11ty/libraries/markdown-library');
-const minifyHtml = require('./src/_11ty/utils/minify-html');
-const markdownFilter = require('./src/_11ty/filters/markdown-filter');
-const browserSyncConfig = require('./src/_11ty/utils/browser-sync-config');
-const { readableDateFilter, machineDateFilter } = require('./src/_11ty/filters/date-filters');
+const htmlmin = require("html-minifier");
+const markdownIt = require('markdown-it');
+const pluginRss = require("@11ty/eleventy-plugin-rss");
 
 module.exports = function (eleventyConfig) {
-  // Plugins
-  eleventyConfig.addPlugin(eleventyNavigationPlugin);
+  // PLUGINS
+  eleventyConfig.addPlugin(pluginRss);
 
-  // Filters
-  eleventyConfig.addFilter('markdown', markdownFilter);
-  eleventyConfig.addFilter('readableDate', readableDateFilter);
-  eleventyConfig.addFilter('machineDate', machineDateFilter);
+  // shortcode to render markdown from string => {{ STRING | markdown | safe }}
+  eleventyConfig.addFilter('markdown', function(value) {
+    let markdown = require('markdown-it')({
+      html: true
+    });
+    return markdown.render(value);
+  });
 
-  // Shortcodes
-  eleventyConfig.addNunjucksAsyncShortcode('Image', imageShortcode);
+  // rebuild on CSS changes
+  eleventyConfig.addWatchTarget('./src/_includes/css/');
 
-  // Libraries
-  eleventyConfig.setLibrary('md', markdownLibrary);
+  // Markdown
+  eleventyConfig.setLibrary(
+    'md',
+    markdownIt({
+      html: true,
+      breaks: true,
+      linkify: true,
+      typographer: true
+    })
+  )
 
-  // Merge data instead of overriding
-  eleventyConfig.setDataDeepMerge(true);
+  //create collections
+  eleventyConfig.addCollection('sections', async (collection) => {
+    return collection.getFilteredByGlob('./src/sections/*.md');
+  });
 
-  // Trigger a build when files in this directory change
-  eleventyConfig.addWatchTarget('./src/assets/scss/');
+  // STATIC FILES
+  eleventyConfig.addPassthroughCopy({ './src/static/': '/' });
 
-  // Minify HTML output
-  eleventyConfig.addTransform('htmlmin', minifyHtml);
-
-  // Don't process folders with static assets
-  eleventyConfig.addPassthroughCopy('./src/favicon.ico');
-  eleventyConfig.addPassthroughCopy('./src/admin');
-  eleventyConfig.addPassthroughCopy('./src/assets/img');
-
-  // Allow Turbolinks to work in development mode
-  eleventyConfig.setBrowserSyncConfig(browserSyncConfig);
+  // TRANSFORM -- Minify HTML Output
+  eleventyConfig.addTransform("htmlmin", function(content, outputPath) {
+    if( outputPath && outputPath.endsWith(".html") ) {
+      let minified = htmlmin.minify(content, {
+        useShortDoctype: true,
+        removeComments: true,
+        collapseWhitespace: true
+      });
+      return minified;
+    }
+    return content;
+  });
 
   return {
-    templateFormats: ['md', 'njk', 'html'],
-    markdownTemplateEngine: 'njk',
-    htmlTemplateEngine: 'njk',
-    dataTemplateEngine: 'njk',
-    passthroughFileCopy: true,
     dir: {
       input: 'src',
-      layouts: "_layouts"
+      output: 'public',
+      data: './_data',
+      includes: './_includes',
+      layouts: './_layouts'
     },
+    templateFormats: [
+      'md',
+      'njk',
+      '11ty.js'
+    ],
+    htmlTemplateEngine: 'njk'
   };
 };

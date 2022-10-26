@@ -1,42 +1,13 @@
 ---
 layout: base.njk
-section: home
+isFront: true
 ---
-<div class="home-page">
-	<div class="home-page__bg-square"></div>
-
-  {# Hero #}
-  <div class="hero">
-    <div class="hero__col">
-      <h1 class="hero__title gradient-text">{{ home.title }}</h1>
-      {% if home.body %}
-        <div class="hero__body">{{ home.body | markdown | safe }}</div>
-      {% endif %}
-    </div>
-    <div class="hero__col">
-      {% Image
-        home.image,
-        home.image_alt,
-        "(min-width: 1024px) 50vw, 100vw",
-        "hero__image shadow",
-        "eager"
-      %}
-    </div>
-  </div>
-
-  {# Projects #}
-  <hr/>
-  <h2>Projects</h2>
-  {% from "macros/projectlist.njk" import projectlist %}
-  {{ projectlist(projects = collections.project | reverse) }}
-
-  {# Articles #}
-  <hr/>
-  <h2>Articles</h2>
-  {% from "macros/articlelist.njk" import articlelist %}
-  {{ articlelist(
-    articles = collections.post | reverse,
-    show_tags = false,
-    limit = 3
-  ) }}
-</div>
+<header class="header w-full min-h-screen flex flex-col justify-between">
+  {% include "navbar.njk" %}
+  {% include "section.header.njk" %}
+</header>
+<main>
+  {% include "section.about.njk" %}
+  {% include "section.features.njk" %}
+  {% include "section.register.njk" %}
+</main>

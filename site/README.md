@@ -1,79 +1,54 @@
-[![Netlify Status](https://api.netlify.com/api/v1/badges/5702ba89-7242-490e-b04d-e4a691faced5/deploy-status)](https://app.netlify.com/sites/fernfolio/deploys)
+# 11ty-landing-page
 
-# Fernfolio
-The super simple portfolio template built with [Eleventy](https://www.11ty.io/) and [Netlify CMS](https://www.netlifycms.org/)
+A simple landing page built with 11ty and Tailwind CSS.
 
-<img width="1280" alt="fernfolio screenshot" src="https://raw.githubusercontent.com/TylerMRoderick/fernfolio-11ty-template/master/fernfolio-preview.png">
+> Port of the [Hugo Version](https://github.com/ttntm/hugo-landing-page)
 
-### <pre>🖥  [Demo](https://fernfolio.netlify.app/)</pre>
+## How to use this template
 
-## 🤔 What is this?
-An [Eleventy](https://www.11ty.io/) theme designed to simplify the process of deploying a beautiful portfolio and blog. Launch your site in minutes!
+**Requirements:**
 
-Based on the [eleventy-netlify-boilerplate](https://github.com/danurbanowicz/eleventy-netlify-boilerplate), but modified to perfectly fit the needs of a modern technical porfolio.
+1. Eleventy (developed and tested with version 0.12.1)
+2. Tailwind CSS
 
-## ✨ Features
-* Built in support for [Netlify CMS](https://www.netlifycms.org/) with editor previews
-* Customizable blog and project pages with tag support
-* Working contact form powered by [Netlify Forms](https://www.netlify.com/products/forms/)
-* Super fast page render and high lighthouse scores
-* Uses Markdown for content files and Nunjucks for layouts
-* 100% Javascript framework free
-* Continuous Deployment workflow via [Netlify](https://www.netlify.com/)
-* Base styles powered by [Sakura](https://github.com/oxalorg/sakura) classless css framework
-* Vanilla css for custom styles (keep it simple)
+All other dependencies are either linked from a CDN or included in this repository.
 
+**Setup:**
 
-## 🚀 Quick Start
+1. Fork, clone or download
+2. `cd` into the root folder
+3. run `npm install`
+4. run `npm run serve`
+5. open a browser and go to `http://localhost:8080`
 
-[![Deploy to Netlify](https://www.netlify.com/img/deploy/button.svg)](https://app.netlify.com/start/deploy?repository=https://github.com/TylerMRoderick/fernfolio-11ty-template&stack=cms)
+**Basic configuration:**
 
-### 1. Click the "Deploy to Netlify" button above
-This will clone this repo to your github account and will deploy a copy of the demo website to your Netlify
-account (you can create an account during this process if you don't have one)
+1. Eleventy -> `./.eleventy.js`
+2. Tailwind -> `./tailwind.config.js`
+3. Netlify -> `./netlify.toml`
 
-### 2. Setup authentication
+CSS is built via PostCSS and based on `./src/_includes/css/_page.css`. Building CSS gets triggered by `./src/css/page.11ty.js` and Tailwind's config is set to JIT (see: [Tailwind docs](https://tailwindcss.com/docs/just-in-time-mode))
 
-After deploying this project, Netlify Identity will add you as a CMS user and
-will email you an invite. Hit the "Accept the invite" link and this should take you to the deployed site. From there, you can add your password to finish user setup.
+Please note that this CSS build _does not_ include the `normalize.css` file used for the 2 regular pages (imprint, privacy) - a minified production version is stored in `./src/static/css` and gets included in the build by default.
 
-### 3. Edit some content
-Now that you are added as a CMS user, add `/admin` to the end of your site url, and log in using your new credentials. You should now see the content editor interface. Now you can start editing content! Any changes to your new repo will auto-deploy a new version to netflify. Cool huh?
+**Change Content:**
 
-### 4. Setup local environment
-- Clone the repo locally `git clone https://github.com/TylerMRoderick/fernfolio-11ty-template.git`
-- Navigate to root folder `cd your-site`
-- Install the goods `npm install`
-- Run it `npm start`
-- You should now be able to see everything running on localhost:8080
-- Add some changes (view [theme customizations](https://fernfolio.netlify.app/posts/theme-customizations/) for some options) 
-- Push your changes to github and an auto-deploy should be triggered
+Page content is stored in
 
-## 💻 Development Scripts
+- `./src/`
+  - `imprint.md`
+  - `privacy.md`
+- `./src/sections/`
+- `./src/_data/features.json`
 
-**`npm start`**
+**Change Templates/Layout:**
 
-> Run 11ty with hot reload at localhost:8080
+Page structure and templates are stored in `./src/_layouts/` and can be edited there.
 
-**`npm run build`**
+Best have a look at `./layouts/base.njk` first to understand how it all comes together - the page itself is constructed from partial templates stored in `./src/includes/` and each section has a corresponding template file (`section.**.njk`) stored there.
 
-> Generate minified production build
+`index.njk` in `./src/` arranges everything, meaning that sections can be added/re-ordered/removed/... there.
 
-Use this as the "Publish command" if needed by hosting such as Netlify.
+**Change images:**
 
-Checkout the Eleventy [Command Line Usage docs](https://www.11ty.dev/docs/usage/) for more options 
-
-
-## 🎩 Common issues
-
-If you change the repo that was created at deploy time from public to private, you'll need to regenerate your token,
-as the token generated using the deploy to Netlify button can only access public repositories. To
-regenerate your token, head to "Settings" in your Netlify site dashboard, go to the "Identity"
-section, then scroll to "Services" where you'll see an "Edit settings" button. Click that and you'll
-see a text link to "Generate access token in GitHub".
-
-If you need any help with setting up Netlify CMS, you can reach out to the Netlify team in the [Netlify CMS Gitter](https://gitter.im/netlify/netlifycms).
-
-## Bug reports, feature requests, etc
-
-This is an ongoing project and I welcome contributions and suggestions! Feel free to submit a PR or issue.
+Images are stored in `./static/img/`; everything in there can be considered a placeholder that should eventually be replaced with your actual production images.
