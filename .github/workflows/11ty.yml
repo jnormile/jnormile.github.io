@@ -25,7 +25,7 @@ jobs:
         run: |
           cd site
           npm install
-          npm run eleventy
+          npm run deploy
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v1.0.4
         with:
