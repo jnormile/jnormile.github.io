@@ -2,41 +2,41 @@
   {
     "title": "Python",
     "icon": "python.png",
-    "content": "Proficiency Level:  ★ ★ ★ ★ ☆"
+    "content": "Proficiency Level: Advanced | ★ ★ ★ ★ ☆"
   },
   {
     "title": "HTML/CSS",
     "icon": "html.png",
-    "content": "Proficiency Level:  ★ ★ ★ ★ ☆"
+    "content": "Proficiency Level: Advanced | ★ ★ ★ ★ ☆"
   },
   {
     "title": "Rust",
     "icon": "icon2.svg",
-    "content": "Proficiency Level:  ★ ★ ☆ ☆ ☆"
+    "content": "Proficiency Level: Novice | ★ ★ ☆ ☆ ☆"
   },
   {
     "title": "JavaScript",
     "icon": "java-script.png",
-    "content": "Proficiency Level:  ★ ★ ★ ☆ ☆"
+    "content": "Proficiency Level: Intermediate | ★ ★ ★ ☆ ☆"
   },
   {
     "title": "C",
     "icon": "letter-c.png",
-    "content": "Proficiency Level:  ★ ★ ★ ☆ ☆"
+    "content": "Proficiency Level: Intermediate | ★ ★ ★ ☆ ☆"
   },
   {
     "title": "R",
     "icon": "r.png",
-    "content": "Proficiency Level:  ★ ★ ☆ ☆ ☆"
+    "content": "Proficiency Level: Novice | ★ ★ ☆ ☆ ☆"
   },
   {
     "title": "GitHub",
     "icon": "github.png",
-    "content": "Proficiency Level:  ★ ★ ★ ★ ☆"
+    "content": "Proficiency Level: Advanced | ★ ★ ★ ★ ☆"
   },
   {
     "title": "Docker",
     "icon": "docker.png",
-    "content": "Proficiency Level:  ★ ★ ★ ☆ ☆"
+    "content": "Proficiency Level: Intermediate | ★ ★ ★ ☆ ☆"
   }
 ]
