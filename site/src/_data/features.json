@@ -10,9 +10,9 @@
     "content": "Proficiency Level:  ★ ★ ★ ★ ☆"
   },
   {
-    "title": "C",
-    "icon": "letter-c.png",
-    "content": "Proficiency Level:  ★ ★ ★ ☆ ☆"
+    "title": "Rust",
+    "icon": "icon2.svg",
+    "content": "Proficiency Level:  ★ ★ ☆ ☆ ☆"
   },
   {
     "title": "JavaScript",
@@ -20,9 +20,9 @@
     "content": "Proficiency Level:  ★ ★ ★ ☆ ☆"
   },
   {
-    "title": "Rust",
-    "icon": "icon2.svg",
-    "content": "Proficiency Level:  ★ ★ ☆ ☆ ☆"
+    "title": "C",
+    "icon": "letter-c.png",
+    "content": "Proficiency Level:  ★ ★ ★ ☆ ☆"
   },
   {
     "title": "R",
