@@ -2,41 +2,41 @@
   {
     "title": "Python",
     "icon": "python.png",
-    "content": "Fluency: High"
+    "content": "Proficiency Level:  ★ ★ ★ ★ ★"
   },
   {
     "title": "HTML/CSS",
     "icon": "html.png",
-    "content": "Fluency: High"
+    "content": "Proficiency Level:  ★ ★ ★ ★ ☆"
   },
   {
     "title": "C",
     "icon": "letter-c.png",
-    "content": "Fluency: Moderate"
+    "content": "Proficiency Level:  ★ ★ ★ ☆ ☆"
   },
   {
     "title": "JavaScript",
     "icon": "java-script.png",
-    "content": "Fluency: Moderate"
+    "content": "Proficiency Level:  ★ ★ ★ ☆ ☆"
   },
   {
     "title": "Rust",
     "icon": "icon2.svg",
-    "content": "Fluency: Low"
+    "content": "Proficiency Level:  ★ ★ ☆ ☆ ☆"
   },
   {
     "title": "R",
     "icon": "r.png",
-    "content": "Fluency: Moderate"
+    "content": "Proficiency Level:  ★ ★ ☆ ☆ ☆"
   },
   {
     "title": "GitHub",
     "icon": "github.png",
-    "content": "Fluency: High"
+    "content": "Proficiency Level:  ★ ★ ★ ★ ☆"
   },
   {
     "title": "Docker",
     "icon": "docker.png",
-    "content": "Fluency: Low"
+    "content": "Proficiency Level:  ★ ★ ★ ☆ ☆"
   }
 ]
